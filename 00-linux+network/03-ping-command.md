@@ -33,4 +33,13 @@ rtt min/avg/max/mdev = 42.800/43.950/45.200/0.874 ms
 ## در پاور شل چجوری میشه از این دستور استفاده کرد
 ```powershell
 Test-Connection domain/ip -Count number
+PS C:\Windows\system32> Test-Connection google.com -Count 12
+
+Source        Destination     IPV4Address      IPV6Address                              Bytes    Time(ms)
+------        -----------     -----------      -----------                              -----    --------
+DESKTOP-1F... google.com      216.239.38.120                                            32       82
+DESKTOP-1F... google.com      216.239.38.120                                            32       63
+DESKTOP-1F... google.com      216.239.38.120                                            32       55
+DESKTOP-1F... google.com      216.239.38.120                                            32       54
+DESKTOP-1F... google.com      216.239.38.120                                            32       62
 ```
