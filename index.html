@@ -23,11 +23,12 @@ header{
   display:flex;justify-content:space-between;align-items:center;
   padding:15px 0 35px
 }
-.logo{font-size:22px;font-weight:800;color:#52dcff}
-.logo span{color:#fff}
-.github{
-  color:#07111e;background:#52dcff;padding:10px 17px;
-  border-radius:10px;text-decoration:none;font-weight:bold
+.logo{font-size:23px;font-weight:800;color:#52dcff}
+.logo span{color:white}
+.github,.back{
+  color:#06111e;background:#52dcff;padding:10px 17px;
+  border-radius:10px;text-decoration:none;font-weight:bold;
+  border:0;cursor:pointer
 }
 .hero{
   padding:55px 45px;border:1px solid #275072;border-radius:28px;
@@ -40,13 +41,13 @@ header{
 }
 h1{font-size:clamp(35px,6vw,70px);margin:20px 0 10px;line-height:1.2}
 h1 span{color:#52dcff}
-.hero p{color:#b8c9d9;max-width:650px;line-height:2}
+.hero p{color:#b8c9d9;max-width:680px;line-height:2}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:25px 0}
-.stat,.card{
+.stat,.card,.reader{
   background:#0e2137;border:1px solid #203c59;
   border-radius:17px;padding:20px
 }
-.stat small{color:#91a8bd}.stat strong{display:block;font-size:28px;margin-top:8px}
+.stat small{color:#91a8bd}.stat strong{display:block;font-size:27px;margin-top:8px}
 .toolbar{
   display:flex;justify-content:space-between;gap:15px;
   align-items:center;margin:35px 0 18px
@@ -67,8 +68,55 @@ input{
 .tag{font-size:11px;color:#52dcff}
 .card h3{font-size:18px;margin:20px 0 10px}
 .card p{color:#9db2c6;line-height:1.9;font-size:13px}
-.card a{color:#7ef2b1;text-decoration:none;font-size:13px}
-footer{margin-top:45px;color:#7890a7;text-align:center;font-size:12px}
+.card button{
+  color:#7ef2b1;background:none;border:0;
+  cursor:pointer;font-size:13px;padding:0
+}
+.reader{
+  display:none;
+  margin-top:25px;
+  line-height:2.1;
+  min-height:500px
+}
+.reader h1{
+  font-size:35px;
+  color:#52dcff;
+  margin:25px 0
+}
+.reader h2{color:#7ef2b1;margin-top:35px}
+.reader h3{color:#ffcf70}
+.reader p{color:#c4d3df}
+.reader pre{
+  direction:ltr;
+  text-align:left;
+  background:#06101d;
+  padding:18px;
+  border-radius:12px;
+  overflow:auto;
+  color:#7ef2b1
+}
+.reader code{
+  direction:ltr;
+  background:#071522;
+  color:#52dcff;
+  padding:3px 6px;
+  border-radius:5px
+}
+.reader li{color:#c4d3df;margin:6px 0}
+.error{
+  color:#ff8585;
+  background:#351d2a;
+  padding:18px;
+  border-radius:10px
+}
+footer{
+  margin-top:45px;
+  color:#7890a7;
+  text-align:center;
+  font-size:12px;
+  border-top:1px solid #203c59;
+  padding:25px
+}
 @media(max-width:800px){
   .grid{grid-template-columns:repeat(2,1fr)}
   .toolbar{flex-direction:column;align-items:stretch}
@@ -89,56 +137,65 @@ footer{margin-top:45px;color:#7890a7;text-align:center;font-size:12px}
 <header>
   <div class="logo">⌁ Network<span>Lab</span></div>
   <a class="github" href="https://github.com/Arian-shokrollahi/Network" target="_blank">
-    مشاهده GitHub ↗
+    GitHub ↗
   </a>
 </header>
 
-<section class="hero">
-  <span class="badge">مسیر یادگیری شبکه و لینوکس</span>
-  <h1>شبکه را <span>واقعی</span> یاد بگیر.</h1>
-  <p>
-    آموزش مفاهیم شبکه، دستورات لینوکس، سیستم‌های عددی،
-    IP، DHCP، IPv4، IPv6 و Subnetting در یک فضای مرتب و کاربردی.
-  </p>
-</section>
+<section id="home">
+  <section class="hero">
+    <span class="badge">مسیر یادگیری شبکه و لینوکس</span>
+    <h1>شبکه را <span>واقعی</span> یاد بگیر.</h1>
+    <p>
+      آموزش مفاهیم شبکه، دستورات لینوکس، سیستم‌های عددی،
+      IP، DHCP، IPv4، IPv6 و Subnetting در یک فضای مرتب و کاربردی.
+    </p>
+  </section>
 
-<section class="stats">
-  <div class="stat"><small>تعداد درس‌ها</small><strong>۱۴</strong></div>
-  <div class="stat"><small>سطح دوره</small><strong>مقدماتی</strong></div>
-  <div class="stat"><small>موضوع اصلی</small><strong>Network</strong></div>
-</section>
+  <section class="stats">
+    <div class="stat"><small>تعداد درس‌ها</small><strong>۱۳</strong></div>
+    <div class="stat"><small>سطح دوره</small><strong>مقدماتی</strong></div>
+    <div class="stat"><small>موضوع اصلی</small><strong>Network</strong></div>
+  </section>
 
-<div class="toolbar">
-  <div>
-    <h2>کتابخانه درس‌ها</h2>
-    <p style="color:#91a8bd">درس موردنظر خودت را انتخاب کن.</p>
+  <div class="toolbar">
+    <div>
+      <h2>کتابخانه درس‌ها</h2>
+      <p style="color:#91a8bd">برای مطالعه روی هر درس کلیک کن.</p>
+    </div>
+    <input id="search" placeholder="جست‌وجوی درس..." oninput="render()">
   </div>
-  <input id="search" placeholder="جست‌وجوی درس..." oninput="render()">
-</div>
 
-<div class="filters">
-  <button class="filter active" onclick="setFilter('all',this)">همه</button>
-  <button class="filter" onclick="setFilter('network',this)">مبانی شبکه</button>
-  <button class="filter" onclick="setFilter('numbers',this)">سیستم‌های عددی</button>
-  <button class="filter" onclick="setFilter('protocols',this)">پروتکل‌ها</button>
-</div>
+  <div class="filters">
+    <button class="filter active" onclick="setFilter('all',this)">همه</button>
+    <button class="filter" onclick="setFilter('network',this)">مبانی شبکه</button>
+    <button class="filter" onclick="setFilter('numbers',this)">سیستم‌های عددی</button>
+    <button class="filter" onclick="setFilter('protocols',this)">پروتکل‌ها</button>
+  </div>
 
-<div class="grid" id="lessons"></div>
+  <div class="grid" id="lessons"></div>
+</section>
+
+<section id="reader" class="reader">
+  <button class="back" onclick="goHome()">← بازگشت به صفحه اصلی</button>
+  <h1 id="readerTitle"></h1>
+  <article id="readerContent">در حال بارگذاری...</article>
+</section>
 
 <footer>
-  Network Lab · ساخته‌شده برای یادگیری بهتر شبکه و لینوکس
+  نویسنده: <strong>Arian Shokrollahi</strong>
+  <br>
+  Network Lab · آموزش شبکه و لینوکس
 </footer>
 
 </div>
 
 <script>
-const repo="https://github.com/Arian-shokrollahi/Network/blob/main/";
+const rawBase =
+"https://raw.githubusercontent.com/Arian-shokrollahi/Network/main/";
 
 const lessons=[
-["network","دستور ip در لینوکس","مدیریت رابط‌ها و آدرس‌های شبکه","00-linux+network/01-ipcommand"],
 ["network","دستور Netcat","بررسی پورت‌ها و تست اتصال TCP","00-linux+network/02-nc-command.md"],
 ["network","دستور Ping","بررسی دسترسی‌پذیری و تأخیر شبکه","00-linux+network/03-ping-command.md"],
-["network","مفاهیم پایه شبکه","شروع مسیر یادگیری شبکه","00-linux+network"],
 ["numbers","مبانی سیستم‌های عددی","آشنایی با مبنای دودویی و نمایش اعداد","01-intro.Numbers-system/01-intro.Numbers.system.md"],
 ["numbers","تبدیل‌های دودویی","تبدیل بین مبنای ۲ و ۱۰","01-intro.Numbers-system/02-Binary.conversions.md"],
 ["numbers","تبدیل‌های هشت‌تایی","کاربرد مبنای ۸ در لینوکس","01-intro.Numbers-system/03-Octal.conversions.md"],
@@ -155,7 +212,8 @@ let active="all";
 
 function setFilter(type,button){
   active=type;
-  document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));
+  document.querySelectorAll(".filter")
+    .forEach(x=>x.classList.remove("active"));
   button.classList.add("active");
   render();
 }
@@ -164,22 +222,113 @@ function render(){
   const query=document.getElementById("search").value.toLowerCase();
 
   const result=lessons.filter(x=>{
-    const matchesFilter=active==="all" || x[0]===active;
-    const matchesSearch=(x[1]+" "+x[2]).toLowerCase().includes(query);
-    return matchesFilter && matchesSearch;
+    const filterOk=active==="all" || x[0]===active;
+    const searchOk=(x[1]+" "+x[2]).toLowerCase().includes(query);
+    return filterOk && searchOk;
   });
 
-  document.getElementById("lessons").innerHTML=result.map(x=>`
+  document.getElementById("lessons").innerHTML=result.map((x,index)=>`
     <article class="card">
       <span class="tag">${x[0].toUpperCase()}</span>
       <h3>${x[1]}</h3>
       <p>${x[2]}</p>
-      <a href="${repo}${encodeURI(x[3])}" target="_blank">مطالعه درس ↗</a>
+      <button onclick="openLesson(${lessons.indexOf(x)})">
+        مطالعه درس ↗
+      </button>
     </article>
   `).join("");
 }
 
+async function openLesson(index){
+  const lesson=lessons[index];
+
+  document.getElementById("home").style.display="none";
+  document.getElementById("reader").style.display="block";
+  document.getElementById("readerTitle").innerText=lesson[1];
+
+  const content=document.getElementById("readerContent");
+  content.innerHTML="در حال بارگذاری محتوای درس...";
+
+  history.pushState(
+    {lesson:index},
+    "",
+    "#lesson-"+index
+  );
+
+  try{
+    const response=await fetch(rawBase+encodeURI(lesson[3]));
+
+    if(!response.ok){
+      throw new Error("File not found");
+    }
+
+    const markdown=await response.text();
+    content.innerHTML=markdownToHtml(markdown);
+    window.scrollTo({top:0,behavior:"smooth"});
+  }catch(error){
+    content.innerHTML=`
+      <div class="error">
+        محتوای این درس پیدا نشد.
+      </div>
+    `;
+  }
+}
+
+function goHome(){
+  document.getElementById("reader").style.display="none";
+  document.getElementById("home").style.display="block";
+  history.pushState({}, "", location.pathname);
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+window.onpopstate=function(){
+  goHome();
+};
+
+function escapeHtml(text){
+  return text
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;");
+}
+
+function markdownToHtml(markdown){
+  let text=escapeHtml(markdown);
+
+  text=text.replace(
+    /```([\s\S]*?)```/g,
+    "<pre><code>$1</code></pre>"
+  );
+
+  text=text.replace(/^### (.*)$/gm,"<h3>$1</h3>");
+  text=text.replace(/^## (.*)$/gm,"<h2>$1</h2>");
+  text=text.replace(/^# (.*)$/gm,"<h1>$1</h1>");
+
+  text=text.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>");
+  text=text.replace(/\*(.*?)\*/g,"<em>$1</em>");
+  text=text.replace(/`([^`]+)`/g,"<code>$1</code>");
+
+  text=text.replace(/^- (.*)$/gm,"<li>$1</li>");
+  text=text.replace(/(<li>.*<\/li>)/gs,"<ul>$1</ul>");
+
+  text=text
+    .split(/\n\s*\n/)
+    .map(block=>{
+      if(
+        block.startsWith("<h") ||
+        block.startsWith("<pre") ||
+        block.startsWith("<ul")
+      ) return block;
+
+      return "<p>"+block.replace(/\n/g,"<br>")+"</p>";
+    })
+    .join("");
+
+  return text;
+}
+
 render();
 </script>
+
 </body>
 </html>
