@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Network Lab | آموزش شبکه و لینوکس</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800&display=swap');
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Vazirmatn,sans-serif;
+  color:#edf7ff;
+  background:
+  radial-gradient(circle at top right,#173d68,transparent 35%),
+  linear-gradient(135deg,#06101d,#0b192b);
+  min-height:100vh
+}
+.container{max-width:1250px;margin:auto;padding:25px}
+header{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:15px 0 35px
+}
+.logo{font-size:22px;font-weight:800;color:#52dcff}
+.logo span{color:#fff}
+.github{
+  color:#07111e;background:#52dcff;padding:10px 17px;
+  border-radius:10px;text-decoration:none;font-weight:bold
+}
+.hero{
+  padding:55px 45px;border:1px solid #275072;border-radius:28px;
+  background:linear-gradient(120deg,#123655,#0b1c31);
+  box-shadow:0 20px 70px #0005
+}
+.badge{
+  color:#7ef2b1;background:#173c3d;border:1px solid #347a70;
+  display:inline-block;padding:7px 13px;border-radius:30px;font-size:13px
+}
+h1{font-size:clamp(35px,6vw,70px);margin:20px 0 10px;line-height:1.2}
+h1 span{color:#52dcff}
+.hero p{color:#b8c9d9;max-width:650px;line-height:2}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:25px 0}
+.stat,.card{
+  background:#0e2137;border:1px solid #203c59;
+  border-radius:17px;padding:20px
+}
+.stat small{color:#91a8bd}.stat strong{display:block;font-size:28px;margin-top:8px}
+.toolbar{
+  display:flex;justify-content:space-between;gap:15px;
+  align-items:center;margin:35px 0 18px
+}
+input{
+  background:#0d2035;border:1px solid #2d4d6a;color:white;
+  padding:13px 16px;border-radius:10px;min-width:260px;outline:none
+}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.filter{
+  color:#a9bfd2;background:transparent;border:1px solid #2b4863;
+  padding:8px 14px;border-radius:30px;cursor:pointer
+}
+.filter.active{background:#52dcff;color:#06111e;border-color:#52dcff}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{transition:.25s;min-height:220px}
+.card:hover{transform:translateY(-5px);border-color:#52dcff}
+.tag{font-size:11px;color:#52dcff}
+.card h3{font-size:18px;margin:20px 0 10px}
+.card p{color:#9db2c6;line-height:1.9;font-size:13px}
+.card a{color:#7ef2b1;text-decoration:none;font-size:13px}
+footer{margin-top:45px;color:#7890a7;text-align:center;font-size:12px}
+@media(max-width:800px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .toolbar{flex-direction:column;align-items:stretch}
+  input{min-width:100%}
+}
+@media(max-width:550px){
+  .container{padding:16px}
+  .hero{padding:32px 22px}
+  .stats,.grid{grid-template-columns:1fr}
+  header{align-items:flex-start;gap:12px}
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+  <div class="logo">⌁ Network<span>Lab</span></div>
+  <a class="github" href="https://github.com/Arian-shokrollahi/Network" target="_blank">
+    مشاهده GitHub ↗
+  </a>
+</header>
+
+<section class="hero">
+  <span class="badge">مسیر یادگیری شبکه و لینوکس</span>
+  <h1>شبکه را <span>واقعی</span> یاد بگیر.</h1>
+  <p>
+    آموزش مفاهیم شبکه، دستورات لینوکس، سیستم‌های عددی،
+    IP، DHCP، IPv4، IPv6 و Subnetting در یک فضای مرتب و کاربردی.
+  </p>
+</section>
+
+<section class="stats">
+  <div class="stat"><small>تعداد درس‌ها</small><strong>۱۴</strong></div>
+  <div class="stat"><small>سطح دوره</small><strong>مقدماتی</strong></div>
+  <div class="stat"><small>موضوع اصلی</small><strong>Network</strong></div>
+</section>
+
+<div class="toolbar">
+  <div>
+    <h2>کتابخانه درس‌ها</h2>
+    <p style="color:#91a8bd">درس موردنظر خودت را انتخاب کن.</p>
+  </div>
+  <input id="search" placeholder="جست‌وجوی درس..." oninput="render()">
+</div>
+
+<div class="filters">
+  <button class="filter active" onclick="setFilter('all',this)">همه</button>
+  <button class="filter" onclick="setFilter('network',this)">مبانی شبکه</button>
+  <button class="filter" onclick="setFilter('numbers',this)">سیستم‌های عددی</button>
+  <button class="filter" onclick="setFilter('protocols',this)">پروتکل‌ها</button>
+</div>
+
+<div class="grid" id="lessons"></div>
+
+<footer>
+  Network Lab · ساخته‌شده برای یادگیری بهتر شبکه و لینوکس
+</footer>
+
+</div>
+
+<script>
+const repo="https://github.com/Arian-shokrollahi/Network/blob/main/";
+
+const lessons=[
+["network","دستور ip در لینوکس","مدیریت رابط‌ها و آدرس‌های شبکه","00-linux+network/01-ipcommand"],
+["network","دستور Netcat","بررسی پورت‌ها و تست اتصال TCP","00-linux+network/02-nc-command.md"],
+["network","دستور Ping","بررسی دسترسی‌پذیری و تأخیر شبکه","00-linux+network/03-ping-command.md"],
+["network","مفاهیم پایه شبکه","شروع مسیر یادگیری شبکه","00-linux+network"],
+["numbers","مبانی سیستم‌های عددی","آشنایی با مبنای دودویی و نمایش اعداد","01-intro.Numbers-system/01-intro.Numbers.system.md"],
+["numbers","تبدیل‌های دودویی","تبدیل بین مبنای ۲ و ۱۰","01-intro.Numbers-system/02-Binary.conversions.md"],
+["numbers","تبدیل‌های هشت‌تایی","کاربرد مبنای ۸ در لینوکس","01-intro.Numbers-system/03-Octal.conversions.md"],
+["numbers","تبدیل‌های شانزده‌تایی","آشنایی با Hex و بایت‌ها","01-intro.Numbers-system/04-Hexadeciaml.conversions.md"],
+["numbers","تبدیل‌های ده‌دهی","تبدیل اعداد بین مبناهای مختلف","01-intro.Numbers-system/05-Decimal.conversions.md"],
+["protocols","DHCP","دریافت خودکار IP و DNS","02-Services-Protocols/01-DHCP.md"],
+["protocols","IPv4","ساختار آدرس‌دهی IPv4","02-Services-Protocols/02-IPV4.md"],
+["protocols","IPv6","نسل جدید آدرس‌دهی شبکه","02-Services-Protocols/03-IPV6.md"],
+["protocols","Subnet Mask","تقسیم شبکه به بخش‌های منطقی","02-Services-Protocols/04-Subnetmask-Prefixlength.md"],
+["protocols","IP عمومی و خصوصی","تفاوت Public و Private IP","02-Services-Protocols/05-Public-and-Private-IP-for-IPV4.md"]
+];
+
+let active="all";
+
+function setFilter(type,button){
+  active=type;
+  document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));
+  button.classList.add("active");
+  render();
+}
+
+function render(){
+  const query=document.getElementById("search").value.toLowerCase();
+
+  const result=lessons.filter(x=>{
+    const matchesFilter=active==="all" || x[0]===active;
+    const matchesSearch=(x[1]+" "+x[2]).toLowerCase().includes(query);
+    return matchesFilter && matchesSearch;
+  });
+
+  document.getElementById("lessons").innerHTML=result.map(x=>`
+    <article class="card">
+      <span class="tag">${x[0].toUpperCase()}</span>
+      <h3>${x[1]}</h3>
+      <p>${x[2]}</p>
+      <a href="${repo}${encodeURI(x[3])}" target="_blank">مطالعه درس ↗</a>
+    </article>
+  `).join("");
+}
+
+render();
+</script>
+</body>
+</html>
