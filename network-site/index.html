@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Network Academy | آکادمی شبکه</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="#home"><span class="brand-mark">&lt;/&gt;</span><span><b>Network</b><small>ACADEMY</small></span></a><div class="top-actions"><button id="themeToggle" aria-label="تغییر تم">☼</button><a href="https://github.com/Arian-shokrollahi/Network" target="_blank" rel="noreferrer">GitHub ↗</a></div></header>
+  <div class="layout">
+    <aside class="sidebar"><div class="side-head"><span>مسیر یادگیری</span><strong id="progressText">۰٪</strong></div><div class="progress"><i id="progressBar"></i></div><label class="search"><span>⌕</span><input id="search" placeholder="جست‌وجوی درس..." /></label><nav id="courseNav"></nav></aside>
+    <main id="app"><section id="home" class="hero"><div class="eyebrow">LEARN • BUILD • CONNECT</div><h1>شبکه را<br><em>واقعی</em> یاد بگیر.</h1><p>یک مسیر تعاملی برای یادگیری Linux، مفاهیم شبکه و پروتکل‌ها؛ از اولین دستور تا تحلیل حرفه‌ای.</p><button class="primary" id="startBtn">شروع یادگیری <span>←</span></button><div class="stats"><div><b id="lessonCount">۱۸</b><small>درس کاربردی</small></div><div><b>۳</b><small>مسیر آموزشی</small></div><div><b>∞</b><small>تمرین و تجربه</small></div></div></section><section class="lesson-view" id="lessonView"><div class="empty"><span>✦</span><h2>یک درس را انتخاب کن</h2><p>از منوی کنار، مسیر یادگیری خودت را شروع کن.</p></div></section></main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script><script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script><script src="app.js"></script>
+</body></html>
